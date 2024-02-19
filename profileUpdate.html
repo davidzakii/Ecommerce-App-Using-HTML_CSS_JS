@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form</title>
+    <title>Profile Update</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/scc2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -72,14 +72,13 @@
     </style>
   </head>
   <body>
-    <form id="registrationForm" action="loginPage.html">
-      <h2>Registration</h2>
-
+    <form action="home.html" id="registrationForm" method="get">
+      <h2>Update Profile</h2>
       <label for="firstName">First Name:</label>
       <input
         type="text"
         id="firstName"
-        name="firstName"
+        name="userName"
         required
         onblur="validateName(this, 'Invalid first name. Name should not contain numbers and should be at least 3 letters.')"
       />
@@ -88,7 +87,7 @@
       <input
         type="text"
         id="lastName"
-        name="lastName"
+        name="userName"
         required
         onblur="validateName(this, 'Invalid last name. Name should not contain numbers and should be at least 3 letters.')"
       />
@@ -124,13 +123,9 @@
         type="submit"
         onclick="registerUser()"
         class="input-submit disabled"
-        value="Register"
+        value="Update"
         disabled
       />
-      <div class="go-login-page">
-        <span>if you have already account </span>
-        <a href="loginPage.html">go to login page</a>
-      </div>
     </form>
 
     <script>
@@ -223,27 +218,22 @@
           submit.classList.add('disabled');
         }
       });
-      function registerUser(event) {
-        const newUser = {
-          firstName: firstName.value,
-          lastName: lastName.value,
-          email: email.value,
-          password: password.value,
-        };
+      function registerUser() {
         const userFromLocalStoreg =
           JSON.parse(localStorage.getItem('users')) || [];
         const findUser = userFromLocalStoreg.find(
           (user) => user.email === email.value
         );
-        if (findUser) {
-          alert('user already exist');
-        } else {
-          userFromLocalStoreg.push(newUser);
-          let userToLocalstoreg = JSON.stringify(userFromLocalStoreg);
-          localStorage.setItem('users', userToLocalstoreg);
-          alert('Congratulations! Your registration is done.');
-        }
+        console.log(findUser);
+        findUser.firstName = firstName.value;
+        findUser.lastName = lastName.value;
+        findUser.email = email.value;
+        findUser.password = password.value;
+        localStorage.setItem('users', JSON.stringify(userFromLocalStoreg));
       }
+      myForm.addEventListener('submit', function () {
+        window.location.href = 'home.html';
+      });
     </script>
   </body>
 </html>

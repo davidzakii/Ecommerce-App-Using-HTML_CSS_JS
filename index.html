@@ -25,17 +25,28 @@
       <div>
         <ul id="navbar">
           <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="cart.html">cart</a></li>
+          <li>
+            <a href="#" onclick="alert('please login to get more feature')"
+              >Shop</a
+            >
+          </li>
+          <!-- <li><a href="cart.html">cart</a></li> -->
           <!-- <li><a href="blog.html">Blog</a></li>
           <li><a href="abput.html">About</a></li>
           <li><a href="contact.html">Contact</a></li> -->
-          <li>
-            <a href="cart.html"><i class="fa fa-shopping-bag"></i></a>
+          <li id="lg-bag">
+            <a href="#" onclick="alert('please login to get more feature')"
+              ><i class="fa fa-shopping-bag"></i
+            ></a>
           </li>
-          <li><a id="" href="loginPage.html">login</a></li>
+          <li><a href="loginPage.html">login</a></li>
           <li><a href="registerPage.html">sign up</a></li>
+          <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
         </ul>
+      </div>
+      <div id="mobile">
+        <a href="#"><i class="fa fa-shopping-bag"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
       </div>
     </section>
 
@@ -348,6 +359,83 @@
         <button class="white">Collection</button>
       </div>
     </section>
+
+    <section id="banner3" class="section-p1">
+      <div class="banner-box">
+        <h2>SEASONAL SALE</h2>
+        <h3>Winter Cllection -50% OFF</h3>
+      </div>
+      <div class="banner-box banner-box2">
+        <h2>NEW FOOTWEAR COLLECTION</h2>
+        <h3>Spring / Summer 2024</h3>
+      </div>
+      <div class="banner-box banner-box3">
+        <h2>T-SHIRTS</h2>
+        <h3>New Trendy Prints</h3>
+      </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+      <div class="newstext">
+        <h4>Sign Up For NewsLetters</h4>
+        <p>Get E-mail about latest shop and <span>special offers.</span></p>
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Your email addres" />
+        <button class="normal">Sign Up</button>
+      </div>
+    </section>
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="img/logo.png" alt="" />
+        <h4>Contact</h4>
+        <p>
+          <strong>Address: </strong>562 Wellington Road , Street 32,
+          SanFranciscs
+        </p>
+        <p><strong>Phone:</strong>+01 2222 365 /(+91) 01 2345 6789</p>
+        <p><strong>Hours:</strong>10:00 - 18:00, Mon - sat</p>
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & condations</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+      </div>
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Or Google Play</p>
+        <div class="row">
+          <img src="img/pay/app.jpg" alt="" />
+          <img src="img/pay/play.jpg" alt="" />
+        </div>
+        <p>Secured Payment</p>
+        <img src="img/pay/pay.png" alt="" />
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024, HTML CSS Ecommerce Templates</p>
+      </div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

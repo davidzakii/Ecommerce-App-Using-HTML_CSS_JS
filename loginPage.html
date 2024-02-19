@@ -88,7 +88,9 @@
         if (findUser && findUser.password === password.value) {
           window.location.href =
             'home.html?userName=' +
-            encodeURIComponent(findUser.firstName + ' ' + findUser.lastName);
+            encodeURIComponent(findUser.firstName + ' ' + findUser.lastName) +
+            '&email=' +
+            encodeURIComponent(findUser.email);
         } else {
           alert('email or password not correct');
           location.reload();

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Tutorial</title>
+    <!-- font awesome cdn -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://pro.fontawsome.com/releases/v5.10.0/css/all.css"
+    /> -->
+    <!-- font awesome library -->
+    <link rel="stylesheet" href="Css/all.css" />
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <!-- main css file -->
+    <link rel="stylesheet" href="Css/style.css" />
+  </head>
+  <body>
+    <section id="header">
+      <a href="#">
+        <img src="img/logo.png" class="logo" alt="" />
+      </a>
+
+      <div>
+        <ul id="navbar">
+          <li><a id="btnHome" href="">Home</a></li>
+          <li><a id="btnShop" href="shop.html">Shop</a></li>
+          <!-- <li><a href="cart.html">cart</a></li> -->
+          <!-- <li><a href="blog.html">Blog</a></li>
+          <li><a href="abput.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li> -->
+          <li id="lg-bag">
+            <a class="active" href="cart.html"
+              ><i class="fa fa-shopping-bag"></i
+            ></a>
+          </li>
+          <!-- <li><a id="" href="loginPage.html">login</a></li>
+          <li><a href="registerPage.html">sign up</a></li> -->
+          <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a class="active" href="cart.html"
+          ><i class="fa fa-shopping-bag"></i
+        ></a>
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
+    </section>
+
+    <section id="cart" class="section-p1">
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody id="cartTableBody">
+          <!-- Cart items will be dynamically added here -->
+        </tbody>
+      </table>
+    </section>
+    <section id="newsletter" class="section-p1 section-m1">
+      <div class="newstext">
+        <h4>Sign Up For NewsLetters</h4>
+        <p>Get E-mail about latest shop and <span>special offers.</span></p>
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Your email addres" />
+        <button class="normal">Sign Up</button>
+      </div>
+    </section>
+
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="img/logo.png" alt="" />
+        <h4>Contact</h4>
+        <p>
+          <strong>Address: </strong>562 Wellington Road , Street 32,
+          SanFranciscs
+        </p>
+        <p><strong>Phone:</strong>+01 2222 365 /(+91) 01 2345 6789</p>
+        <p><strong>Hours:</strong>10:00 - 18:00, Mon - sat</p>
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4>About</h4>
+        <a href="#">About Us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & condations</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+      </div>
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Or Google Play</p>
+        <div class="row">
+          <img src="img/pay/app.jpg" alt="" />
+          <img src="img/pay/play.jpg" alt="" />
+        </div>
+        <p>Secured Payment</p>
+        <img src="img/pay/pay.png" alt="" />
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024, HTML CSS Ecommerce Templates</p>
+      </div>
+    </footer>
+    <!-- <script src="script.js"></script> -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const userName = urlParams.get('userName');
+      const email = urlParams.get('email');
+      const btnHome = document.getElementById('btnHome');
+      const btnShop = document.getElementById('btnShop');
+      btnHome.href = `home.html?userName=${userName}&email=${email}`;
+      btnShop.href = `shop.html?userName=${userName}&email=${email}`;
+      // script.js
+
+      document.addEventListener('DOMContentLoaded', displayCart);
+
+      function displayCart() {
+        // Get cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Get the table body element
+        const cartTableBody = document.getElementById('cartTableBody');
+
+        // Clear existing rows in the table
+        cartTableBody.innerHTML = '';
+
+        // Populate the table with cart items
+        cart.forEach((item) => {
+          const row = document.createElement('tr');
+
+          // Add columns for title, price, image, quantity, and remove button
+          row.innerHTML = `
+            <td>${item.title}</td>
+            <td>${item.price}</td>
+            <td><img src="${item.image}" alt="${item.title}" style="width: 50px;"></td>
+            <td>${item.quantity}</td>
+            <td><button onclick="removeFromCart('${item.title}')">Remove</button></td>
+        `;
+
+          // Append the row to the table
+          cartTableBody.appendChild(row);
+        });
+      }
+
+      function removeFromCart(title) {
+        // Get the cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Remove the item from the cart by filtering it out
+        cart = cart.filter((item) => item.title !== title);
+
+        // Save the updated cart data to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Refresh the cart display on the page
+        displayCart();
+      }
+    </script>
+  </body>
+</html>
